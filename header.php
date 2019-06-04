@@ -16,21 +16,21 @@ session_start();
 <body>
     <header>
         <nav>
-            <a href="#">
+            <a href="index.php">
                 <img src="img/ak-logo.png">
             </a>
-
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="portfolio.php">Portfolio</a></li>
-                <li><a href="aboutme.php">About me</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
 
             <div>
                 <?php
                 // IF USER LOG IN
                 if (isset($_SESSION['userId'])) {
+                    echo '<ul>
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="portfolio.php">Portfolio</a></li>
+                            <li><a href="aboutme.php">About me</a></li>
+                            <li><a href="contact.php">Contact</a></li>
+                        </ul>';
+
                     // DISPLAY LOGOUT FORM
                     echo '<form action="includes/logout.inc.php" method="POST">
                             <button type="submit" name="logout-submit">Logout</button>
@@ -46,8 +46,6 @@ session_start();
                         </form>';
                 }
                 ?>
-
-                <a href="signup.php">Signup</a>
             </div>
         </nav>
     </header>

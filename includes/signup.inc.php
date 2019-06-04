@@ -11,27 +11,27 @@ if (isset($_POST['signup-submit'])) {
 
     // IF USER LEAVE ANY EMPTY FIELDS //////////////////////////////////////////////////////////////
     if (empty($uid) || empty($email) || empty($pwd) || empty($repwd)) {
-        header("Location: ../signup.php?error=emptyfields&uid=" . $uid . "&email=" . $email);
+        header("Location: ../index.php?error=emptyfields&uid=" . $uid . "&email=" . $email);
         exit();
 
         // IF EMAIL AND USERNAME ARE BOTH INVALID //////////////////////////////////////////////////
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $uid)) {
-        header("Location: ../signup.php?error=invalidemail&uid");
+        header("Location: ../index.php?error=invalidemail&uid");
         exit();
 
         // IF ONLY EMAIL IS INVALID ////////////////////////////////////////////////////////////
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../signup.php?error=invalidemail&uid=" . $uid);
+        header("Location: ../index.php?error=invalidemail&uid=" . $uid);
         exit();
 
         // IF ONLY USERNAME IS INVALID //////////////////////////////////////////////////
     } else if (!preg_match("/^[a-zA-Z0-9]*$/", $uid)) {
-        header("Location: ../signup.php?error=invaliduid&email=" . $email);
+        header("Location: ../index.php?error=invaliduid&email=" . $email);
         exit();
 
         // IF PASSWORDS WONT MATCH //////////////////////////////////////////////////
     } else if ($pwd !== $repwd) {
-        header("Location: ../signup.php?error=passwordcheck&uid=" . $uid . "&email=" . $email);
+        header("Location: ../index.php?error=passwordcheck&uid=" . $uid . "&email=" . $email);
         exit();
 
         // CHECK IF USERNAME ALREADY EXISTS IN DATABASE //////////////////////////////////////////////////
@@ -41,7 +41,7 @@ if (isset($_POST['signup-submit'])) {
 
         // IF THERE IS SOME CONNECTION ERROR WITH DATABASE
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../signup.php?error=sqlerror");
+            header("Location: ../index.php?error=sqlerror");
             exit();
 
             // IF CONNECTED SUCCESSFULLY
@@ -54,7 +54,7 @@ if (isset($_POST['signup-submit'])) {
 
             // IF USERNAME IS ALREADY TAKEN
             if ($resultCheck > 0) {
-                header("Location: ../signup.php?error=usertaken&email=" . $email);
+                header("Location: ../index.php?error=usertaken&email=" . $email);
                 exit();
 
                 // IF USERNAME IS NOT TAKEN
@@ -65,7 +65,7 @@ if (isset($_POST['signup-submit'])) {
 
                 // IF THERE IS SOME CONNECTION ERROR WITH DATABASE
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("Location: ../signup.php?error=sqlerror");
+                    header("Location: ../index.php?error=sqlerror");
                     exit();
 
                     // IF CONNECTED SUCCESSFULLY, INSERT USERNAME INTO DATABASE
@@ -76,7 +76,7 @@ if (isset($_POST['signup-submit'])) {
                     mysqli_stmt_bind_param($stmt, "sss", $uid, $email, $hashedPwd);
                     mysqli_stmt_execute($stmt);
 
-                    header("Location: ../signup.php?signup=success");
+                    header("Location: ../index.php?signup=success");
                     exit();
                 }
             }
@@ -88,6 +88,6 @@ if (isset($_POST['signup-submit'])) {
 
     // IF USER SOMEHOW TRY TO SIGNUP WITHOUT PRESSING SIGNUP BUTTON
 } else {
-    header("Location: ../signup.php");
+    header("Location: ../index.php");
     exit();
 }
