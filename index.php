@@ -6,12 +6,9 @@ require 'header.php';
     <?php
     // IF USER LOG IN
     if (isset($_SESSION['userId'])) {
-
         // IF USER LOG OUT
     } else {
-        echo '<h1>Signup</h1>
-
-            <form action="includes/signup.inc.php" method="POST">
+        echo '<form action="includes/signup.inc.php" method="POST" id="signup-form">
                 <input type="text" name="uid" placeholder="Username">
                 <input type="text" name="email" placeholder="E-mail">
                 <input type="password" name="pwd" placeholder="Password">

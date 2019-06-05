@@ -16,10 +16,6 @@ session_start();
 <body>
     <header>
         <nav>
-            <a href="index.php">
-                <img src="img/ak-logo.png">
-            </a>
-
             <div>
                 <?php
                 // IF USER LOG IN
@@ -29,20 +25,19 @@ session_start();
                             <li><a href="portfolio.php">Portfolio</a></li>
                             <li><a href="aboutme.php">About me</a></li>
                             <li><a href="contact.php">Contact</a></li>
+                            
+                            <form action="includes/logout.inc.php" method="POST">
+                                <button type="submit" name="logout-submit">Logout</button>
+                            </form
                         </ul>';
-
-                    // DISPLAY LOGOUT FORM
-                    echo '<form action="includes/logout.inc.php" method="POST">
-                            <button type="submit" name="logout-submit">Logout</button>
-                        </form>';
 
                     // IF USER LOG OUT OR ISN'T LOGGED IN YET
                 } else {
                     // DISPLAY LOGIN FORM
-                    echo '<form action="includes/login.inc.php" method="POST">
+                    echo '<form action="includes/login.inc.php" method="POST" id="login-form">
                             <input type="text" name="mailuid" placeholder="Username/E-mail...">
                             <input type="password" name="pwd" placeholder="Password...">
-                            <button type="submit" name="login-submit">Login</button>
+                            <button type="submit" name="login-submit" id="login-submit">Login</button>
                         </form>';
                 }
                 ?>
