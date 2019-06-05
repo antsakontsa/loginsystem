@@ -38,6 +38,10 @@ nav ul li a {
     padding: 10px;
 }
 
+#login-form input {
+    width: 10rem;
+}
+
 #login-form button {
     background-color: green;
     border: 1px solid #fff;
