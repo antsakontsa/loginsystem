@@ -11,6 +11,13 @@ header {
     background-color: #444;
 }
 
+#login {
+    text-align: center;
+    color: #fff;
+    background-color: green;
+    padding: 10px;
+}
+
 nav ul {
     list-style: none;
     padding: 1rem;
@@ -22,11 +29,16 @@ nav ul li {
 }
 
 nav ul li a {
-    text-decoration: none; 
+    text-decoration: none;
+    color: #fff;
 }
 
 #logout-submit {
-    padding: 2rem;
+    padding: 10px;
+    background-color: yellow;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
 }
 
 #login-form {
@@ -52,7 +64,7 @@ nav ul li a {
 
 /* INDEX *************************************************************************************/
 
-#signup-form {
+#index-wrapper {
     margin-top: 10%;
     width: 225px;
     position: absolute;
@@ -60,6 +72,20 @@ nav ul li a {
     left: -132.5px;
     background: #444;
     padding: 1rem;
+}
+
+.alert-error {
+    color: #fff;
+    text-align: center;
+    background-color: red;
+    padding: 7px;
+}
+
+.alert-success {
+    color: #fff;
+    text-align: center;
+    background-color: green;
+    padding: 7px;
 }
 
 #signup-form input, button {
@@ -74,7 +100,6 @@ nav ul li a {
     color: #fff;
     cursor: pointer;
 }
-
 
 /* FOOTER *************************************************************************************/
 
@@ -92,4 +117,8 @@ footer {
 main {
     min-height: 82vh;
     background-color: black;
+}
+
+.white {
+    color: #fff;
 }
